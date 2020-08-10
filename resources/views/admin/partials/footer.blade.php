@@ -8,7 +8,7 @@
 
         &nbsp;&nbsp;&nbsp;&nbsp;
 
-        @if(config('admin.show_version'))
+        @if(config('admin.show_version') || config('app.debug'))
         <strong>Version</strong>&nbsp;&nbsp; {!! \Encore\Admin\Admin::VERSION !!}
         @endif
 

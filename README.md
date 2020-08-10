@@ -4,6 +4,7 @@ php >= 7.2.* Laravel 6.* Laravel-admin 1.8.1
 安装步骤
 -
 ~~~
+- composer install
 - cp .env.example .env (生成 .env 文件，并配置环境变量与数据库相关信息)
 - composer install
 - php artisan key:generate

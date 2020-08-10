@@ -19,3 +19,5 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+// 重写官方页面
+app('view')->prependNamespace('admin',resource_path('views/admin'));

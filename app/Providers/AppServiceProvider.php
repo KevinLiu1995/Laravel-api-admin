@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,9 +14,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //非生产环境加载 IDE 提示工具类
-        if ($this->app->environment() !== 'production') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        if (!$this->app->isProduction()) {
+            //非生产环境加载 IDE 提示工具类
+            $this->app->register(IdeHelperServiceProvider::class);
+            //非生产环境加载 Telescope
+            $this->app->register(TelescopeServiceProvider::class);
         }
     }
 

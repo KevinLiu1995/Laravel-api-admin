@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//回退路由
+Route::fallback(function () {
+    return response()
+        ->json(['msg' => '404 请检查访问地址或请求方式是否正确', 'code' => 404, 'data' => []])
+        ->setStatusCode(404);
+});

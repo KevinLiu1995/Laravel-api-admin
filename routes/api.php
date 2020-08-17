@@ -12,14 +12,12 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1')->name('api.v1.')->namespace('Api\Index')->group(function () {
+    // 短信验证码
+    Route::post('/sms/code', 'SmsController@store')->name('sms.code');
+    //回退路由
+    Route::fallback('IndexController@fallBack');
 });
 
-//回退路由
-Route::fallback(function () {
-    return response()
-        ->json(['msg' => '404 请检查访问地址或请求方式是否正确', 'code' => 404, 'data' => []])
-        ->setStatusCode(404);
-});
+
+

@@ -176,6 +176,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
+        App\Providers\EasySmsServiceProvider::class,
 
     ],
 
@@ -231,5 +232,22 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
 
     ],
+
+    /*
+     |--------------------------------------------------------------------------
+     | 短信验证码配置
+     |--------------------------------------------------------------------------
+     | 阿里云短信验证码配置
+     |
+     */
+    'sms_code_enable' => env('SMS_CODE_ENABLE', false),
+
+    'sms_ttl' => env('SMS_TTL', 0),
+
+    'ali_access_key_id' => env('ALI_ACCESS_KEY_ID', null),
+
+    'ali_access_key_secret' => env('ALI_ACCESS_KEY_SECRET', null),
+
+    'ali_sms_sign_name' => env('ALI_SMS_SIGN_NAME', null),
 
 ];

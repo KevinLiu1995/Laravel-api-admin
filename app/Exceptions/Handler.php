@@ -86,7 +86,7 @@ class Handler extends ExceptionHandler
                         $msg .= $item;
                     }
                 }
-                return responseMessage($msg, 422, 200);
+                return responseMessage($msg, 400, 200);
             }
 
         }

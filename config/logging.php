@@ -96,6 +96,12 @@ return [
             'handler' => NullHandler::class,
         ],
 
+        // easysms log配置
+        'easysms' => [
+            'driver' => 'daily',
+            'path' => storage_path('logs/easy-sms.log')
+        ],
+
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],

@@ -115,18 +115,6 @@ class AdminMenuTableSeeder extends Seeder
             ),
             8 => 
             array (
-                'id' => 9,
-                'parent_id' => 0,
-                'order' => 9,
-                'title' => 'PHP info',
-                'icon' => 'fa-exclamation',
-                'uri' => 'phpinfo',
-                'permission' => 'ext.php-info',
-                'created_at' => '2020-06-13 09:24:37',
-                'updated_at' => '2020-06-13 10:17:16',
-            ),
-            9 => 
-            array (
                 'id' => 10,
                 'parent_id' => 0,
                 'order' => 10,
@@ -137,7 +125,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 09:34:03',
                 'updated_at' => '2020-06-13 10:52:51',
             ),
-            10 => 
+            9 => 
             array (
                 'id' => 11,
                 'parent_id' => 0,
@@ -149,7 +137,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 09:59:59',
                 'updated_at' => '2020-06-13 10:52:58',
             ),
-            11 => 
+            10 => 
             array (
                 'id' => 12,
                 'parent_id' => 0,
@@ -161,7 +149,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 12:20:21',
                 'updated_at' => '2020-06-13 12:20:21',
             ),
-            12 => 
+            11 => 
             array (
                 'id' => 13,
                 'parent_id' => 0,
@@ -173,7 +161,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 12:33:14',
                 'updated_at' => '2020-07-31 09:57:42',
             ),
-            13 => 
+            12 => 
             array (
                 'id' => 14,
                 'parent_id' => 13,
@@ -185,7 +173,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 12:33:14',
                 'updated_at' => '2020-06-13 12:33:14',
             ),
-            14 => 
+            13 => 
             array (
                 'id' => 15,
                 'parent_id' => 13,
@@ -197,7 +185,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 12:33:14',
                 'updated_at' => '2020-06-13 12:33:14',
             ),
-            15 => 
+            14 => 
             array (
                 'id' => 16,
                 'parent_id' => 13,
@@ -209,7 +197,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 12:33:14',
                 'updated_at' => '2020-06-13 12:33:14',
             ),
-            16 => 
+            15 => 
             array (
                 'id' => 17,
                 'parent_id' => 13,
@@ -221,7 +209,7 @@ class AdminMenuTableSeeder extends Seeder
                 'created_at' => '2020-06-13 12:33:14',
                 'updated_at' => '2020-06-13 12:33:14',
             ),
-            17 => 
+            16 => 
             array (
                 'id' => 19,
                 'parent_id' => 0,

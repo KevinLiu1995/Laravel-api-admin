@@ -17,14 +17,15 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         if (!$this->app->isProduction()) {
-            //非生产环境加载 IDE 提示工具类
-            $this->app->register(IdeHelperServiceProvider::class);
-            //非生产环境加载 Telescope
+            //非生产环境加载 Telescope 调试工具
             $this->app->register(TelescopeServiceProvider::class);
         }
-
+        if($this->app->isLocal()){
+            //本地环境加载 IDE 提示工具类
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
         if (config('pay.alipay.enable')){
-            // 往服务容器中注入一个名为 alipay 的单例对象
+            // 向服务容器中注入一个名为 alipay 的单例对象
             $this->app->singleton('alipay', function () {
                 $config = config('pay.alipay');
                 // 判断当前项目运行环境是否为线上环境
@@ -38,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
                     $config['notify_url'] = route('api.payment.alipay.notify');
                     $config['return_url'] = route('api.payment.alipay.return');
                 }
-                // 调用 Yansongda\Pay 来创建一个支付宝支付对象
+                // 创建一个支付宝支付对象
                 return Pay::alipay($config);
             });
         }
@@ -54,7 +55,7 @@ class AppServiceProvider extends ServiceProvider
                     $config['log']['level'] = Logger::WARNING;
                     $config['notify_url'] = route('api.payment.wechatpay.notify');
                 }
-                // 调用 Yansongda\Pay 来创建一个微信支付对象
+                // 创建一个微信支付对象
                 return Pay::wechat($config);
             });
         }

@@ -62,10 +62,6 @@ function responseMessage($message = '', $code = 200, $statusCode = 200,$data = [
         'data' => $data
     ];
 
-//    if ($code === 400) {
-//        $statusCode = $code;
-//    }
-
     return response()->json($res)->setStatusCode($statusCode);
 }
 

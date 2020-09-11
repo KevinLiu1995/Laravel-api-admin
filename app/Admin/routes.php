@@ -10,7 +10,7 @@ Route::group([
     'middleware'    => config('admin.route.middleware'),
     'as'            => config('admin.route.prefix') . '.',
 ], function (Router $router) {
-
+    $router->resource('auth/users', 'AdministratorController')->names('admin.auth.users');
     $router->get('/', 'HomeController@index')->name('home');
 
 });

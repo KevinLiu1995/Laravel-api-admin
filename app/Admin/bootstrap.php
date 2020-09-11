@@ -18,6 +18,34 @@
  *
  */
 
-Encore\Admin\Form::forget(['map', 'editor']);
+use Encore\Admin\Form;
+use Encore\Admin\Grid;
+
+Form::forget(['map', 'editor']);
 // 重写页面
 app('view')->prependNamespace('admin',resource_path('views/admin'));
+
+
+Grid::init(function (\Encore\Admin\Grid $grid) {
+//    // 全局去掉表格导出按钮
+//    $grid->disableExport();
+});
+
+Form::init(function (Form $form) {
+//    $form->tools(function (Form\Tools $tools) {
+//        // 去掉`列表`按钮
+//        $tools->disableList();
+//        // 去掉`删除`按钮
+//        $tools->disableDelete();
+//        // 去掉`查看`按钮
+//        $tools->disableView();
+//    });
+//    $form->footer(function ($footer) {
+//        // 去掉`查看`checkbox
+//        $footer->disableViewCheck();
+//        // 去掉`继续编辑`checkbox
+//        $footer->disableEditingCheck();
+//        // 去掉`继续创建`checkbox
+//        $footer->disableCreatingCheck();
+//    });
+});

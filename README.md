@@ -72,3 +72,8 @@ php artisan iseed my_table --classnameprefix=Customized
 ~~~
 400-参数、其他错误，在 msg中体现
 ~~~
+
+-配置 Laravel-admin 面包屑导航
+~~~
+resources/lang/zh-CN/admin.php  在 breadcrumb 数组中添加面包屑对应名称
+~~~

@@ -12,6 +12,10 @@ php >= 7.2.* Laravel 6.* Laravel-admin 1.8.1
 - php artisan migrate --seed
 ~~~
 
+助手函数
+-
+- 助手函数放置在 bootstrap/helpers.php 文件内
+
 常用命令行
 -
 - model 类
@@ -68,12 +72,14 @@ php artisan iseed my_table,another_table
 php artisan iseed my_table --classnameprefix=Customized
 ~~~
 
--状态码
+- 状态码
 ~~~
 400-参数、其他错误，在 msg中体现
 ~~~
 
--配置 Laravel-admin 面包屑导航
+配置 Laravel-admin 面包屑导航
+-
 ~~~
-resources/lang/zh-CN/admin.php  在 breadcrumb 数组中添加面包屑对应名称
+ 在 resources/lang/XXX/admin.php 文件的 breadcrumb 数组中添加面包屑对应名称
 ~~~
+

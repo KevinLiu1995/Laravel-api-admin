@@ -1,0 +1,18 @@
+{
+    "Id": "ID",
+    "User": "用户",
+    "Username": "用户名",
+    "Password": "密码",
+    "Nickname": "昵称",
+    "Phone": "手机号码",
+    "Birthday": "生日",
+    "Gender": "性别",
+    "Avatar": "头像",
+    "Email": "邮箱",
+    "Wechat open id":"微信 open_id",
+    "Wechat union id":"微信 union_id",
+    "Status":"状态",
+    "Deleted at": "删除时间",
+    "Created at": "创建时间",
+    "Updated at": "更新时间"
+}

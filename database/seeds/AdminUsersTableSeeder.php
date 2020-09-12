@@ -24,7 +24,7 @@ class AdminUsersTableSeeder extends Seeder
                 'password' => '$2y$10$p9DxbVLz2rCRWP5Xhs.BQ.plctdqFYPhnhZxXQKDL9MyJPnPpBj6W',
                 'name' => 'root',
                 'avatar' => '../local/images/avatar.jpg',
-                'remember_token' => 'IGUtaina04rstx4tSpgYNGwbjSSYkDA7mZrYaUFUJiEJebjncO9FDylCplh6',
+                'remember_token' => 'P3nMIQHnNch1yDZkfQlaK2iGihUOrJ6qtpKX6fLiL5CSNkcxrUzz3mzqAgFT',
                 'created_at' => '2020-06-10 15:06:43',
                 'updated_at' => '2020-08-10 11:16:13',
             ),

@@ -124,7 +124,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model' => Encore\Admin\Auth\Database\Administrator::class,
+                'model' => App\Models\Administrator::class,
             ],
         ],
 
@@ -313,7 +313,7 @@ return [
     | each page
     |
     */
-    'show_version' => false,
+    'show_version' => true,
 
     /*
     |--------------------------------------------------------------------------

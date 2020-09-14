@@ -29,6 +29,10 @@ app('view')->prependNamespace('admin',resource_path('views/admin'));
 Grid::init(function (\Encore\Admin\Grid $grid) {
 //    // 全局去掉表格导出按钮
 //    $grid->disableExport();
+    $grid->filter(function ($filter) {
+        // 设置created_at字段的范围查询
+        $filter->between('created_at', __('Created at'))->datetime();
+    });
 });
 
 Form::init(function (Form $form) {

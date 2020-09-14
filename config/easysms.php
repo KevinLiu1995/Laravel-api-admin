@@ -24,6 +24,9 @@ return [
             'access_key_id' => env('ALI_ACCESS_KEY_ID'),
             'access_key_secret' => env('ALI_ACCESS_KEY_SECRET'),
             'sign_name' => env('ALI_SMS_SIGN_NAME'),
+            'templates' => [
+                'register' => env('ALI_TEMPLATE_REGISTER'),
+            ]
         ],
     ],
 ];

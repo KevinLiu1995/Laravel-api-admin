@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Api\Index;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Index\SmsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Overtrue\EasySms\EasySms;
 use Overtrue\EasySms\Exceptions\NoGatewayAvailableException;
 
 class SmsController extends Controller
@@ -13,46 +16,42 @@ class SmsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param SmsRequest $request
+     * @param EasySms $easySms
      * @return \Illuminate\Http\JsonResponse
+     * @throws \Overtrue\EasySms\Exceptions\InvalidArgumentException
      */
-    public function store(SmsRequest $request)
+    public function store(SmsRequest $request,EasySms $easySms)
     {
         if (!config('app.sms_code_enable')) {
             return responseMessage('未开启短信验证码', 400);
         }
 
-        $sms = app('easysms');
-        try {
-            $code = random_int(111111, 999999);
+        $phone = $request->phone;
 
-            $sms->send($request->phone, [
-                // template id
-                'template' => 'SMS_197675052',
+        // 生成6位随机数，左侧补0
+        $code = str_pad(random_int(1, 999999), 6, 0, STR_PAD_LEFT);
+
+        try {
+            $easySms->send($phone,[
+                'template' => config('easysms.gateways.aliyun.templates.register'),
                 'data' => [
                     'code' => $code
                 ],
             ]);
-
-            // 将发送信息写入日志
-            $log_data = "短信发送成功 to => $request->phone || code => $code";
-            Log::channel('easysms')->info($log_data);
-
-            // 生成缓存记录
-            \Cache::add('sms_code_' . $request->phone, $code, config('app.sms_ttl'));
-
-            return responseMessage('短信发送成功，请注意查收！');
-
-        } catch (NoGatewayAvailableException $exception) {
-
+        } catch (\Overtrue\EasySms\Exceptions\NoGatewayAvailableException $exception) {
             $message = $exception->getException('aliyun')->getMessage();
-            Log::channel('easysms')->error($message);
-
-            return responseMessage("短信发送失败,请稍候重试！", 400);
-        } catch (\Exception $e) {
-
-            Log::error('操作失败' . PHP_EOL . $e->getMessage());
-            return responseMessage('fail',400);
+            abort(500, $message ?: '短信发送异常');
         }
+
+        $key = 'smsCode_' . Str::random(15);
+        $expiredAt = now()->addMinutes(5);
+        // 缓存验证码 5 分钟过期。
+        Cache::put($key, ['phone' => $phone, 'code' => $code], $expiredAt);
+
+        return responseData([
+            'key' => $key,
+            'expired_at' => $expiredAt->toDateTimeString(),
+        ]);
     }
 }
